@@ -1,59 +1,65 @@
-import {Routes} from '@angular/router';
-import {AppLayout} from '@/layout/components/app.layout';
-import {LandingLayout} from '@/layout/components/app.landinglayout';
-import {AuthLayout} from '@/layout/components/app.authlayout';
-import {Notfound} from '@/pages/notfound/notfound';
+import { Routes } from '@angular/router';
+import { AppLayout } from '@/layout/components/app.layout';
+import { LandingLayout } from '@/layout/components/app.landinglayout';
+import { AuthLayout } from '@/layout/components/app.authlayout';
+import { Notfound } from '@/pages/notfound/notfound';
 
 export const appRoutes: Routes = [
     {
         path: '',
         component: AppLayout,
         children: [
+
+            {
+                path: 'activities',
+                loadChildren: () =>
+                    import('@/features/activities/activities.routes').then(m => m.ACTIVITIES_ROUTES),
+            },
             {
                 path: '',
                 loadComponent: () => import('@/pages/dashboards/marketing/marketingdashboard').then((c) => c.MarketingDashboard),
-                data: {breadcrumb: 'Marketing Dashboard'}
+                data: { breadcrumb: 'Marketing Dashboard' }
             },
             {
                 path: 'dashboard-ecommerce',
                 loadComponent: () => import('@/pages/dashboards/ecommerce/ecommercedashboard').then((c) => c.EcommerceDashboard),
-                data: {breadcrumb: 'E-Commerce Dashboard'}
+                data: { breadcrumb: 'E-Commerce Dashboard' }
             },
             {
                 path: 'dashboard-banking',
                 loadComponent: () => import('@/pages/dashboards/banking/bankingdashboard').then((c) => c.BankingDashboard),
-                data: {breadcrumb: 'Banking Dashboard'}
+                data: { breadcrumb: 'Banking Dashboard' }
             },
             {
                 path: 'uikit',
-                data: {breadcrumb: 'UI Kit'},
+                data: { breadcrumb: 'UI Kit' },
                 loadChildren: () => import('@/pages/uikit/uikit.routes')
             },
             {
                 path: 'documentation',
-                data: {breadcrumb: 'Documentation'},
+                data: { breadcrumb: 'Documentation' },
                 loadComponent: () => import('@/pages/documentation/documentation').then((c) => c.Documentation)
             },
             {
                 path: 'pages',
                 loadChildren: () => import('@/pages/pages.routes'),
-                data: {breadcrumb: 'Pages'}
+                data: { breadcrumb: 'Pages' }
             },
             {
                 path: 'apps',
                 loadChildren: () => import('@/apps/apps.routes'),
-                data: {breadcrumb: 'Apps'}
+                data: { breadcrumb: 'Apps' }
             },
 
             {
                 path: 'blocks',
-                data: {breadcrumb: 'Free Blocks'},
+                data: { breadcrumb: 'Free Blocks' },
                 loadChildren: () => import('@/pages/blocks/blocks.routes')
             },
             {
                 path: 'ecommerce',
                 loadChildren: () => import('@/pages/ecommerce/ecommerce.routes'),
-                data: {breadcrumb: 'E-Commerce'}
+                data: { breadcrumb: 'E-Commerce' }
             },
             {
                 path: 'profile',
@@ -119,11 +125,11 @@ export const appRoutes: Routes = [
             }
         ]
     },
-    {path: 'notfound', component: Notfound},
+    { path: 'notfound', component: Notfound },
     {
         path: 'auth',
         component: AuthLayout,
         children: []
     },
-    {path: '**', redirectTo: '/notfound'}
+    { path: '**', redirectTo: '/notfound' }
 ];

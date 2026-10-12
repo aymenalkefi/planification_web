@@ -1,0 +1,6 @@
+<div class="card">
+  <h3>Détail de l'activité</h3>
+  @if (activity(); as a) {
+    <app-activity-form mode="view" [activity]="a" (cancelled)="back()" />
+  }
+</div>

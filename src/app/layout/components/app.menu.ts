@@ -104,6 +104,7 @@ export class AppMenu {
             ]
         },
         {separator: true},
+        {separator: true},
         {
             label: 'UI Kit',
             icon: 'pi pi-fw pi-star-fill',

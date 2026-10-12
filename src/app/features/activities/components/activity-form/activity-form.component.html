@@ -1,0 +1,29 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="flex flex-col gap-4">
+  <div class="flex flex-col gap-1">
+    <label for="name">Nom</label>
+    <input pInputText id="name" formControlName="name" />
+    @if (form.controls.name.touched && form.controls.name.invalid) {
+      <small class="text-red-500">Le nom est obligatoire.</small>
+    }
+  </div>
+
+  <div class="flex flex-col gap-1">
+    <label for="description">Description</label>
+    <input pInputText id="description" formControlName="description" />
+  </div>
+
+  <div class="flex flex-col gap-1">
+    <label for="duration">Durée (minutes)</label>
+    <p-inputnumber inputId="duration" formControlName="durationMinutes" [useGrouping]="false" />
+    @if (form.controls.durationMinutes.touched && form.controls.durationMinutes.invalid) {
+      <small class="text-red-500">Durée obligatoire (minimum 1).</small>
+    }
+  </div>
+
+  <div class="flex gap-2 justify-end">
+    <p-button label="Retour" severity="secondary" type="button" (onClick)="cancelled.emit()" />
+    @if (mode() !== 'view') {
+  <p-button label="Enregistrer" type="submit" />
+}
+  </div>
+</form>

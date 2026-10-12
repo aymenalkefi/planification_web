@@ -13,5 +13,5 @@ export const environment = {
     redirectUri: 'http://localhost:4200'
   },
  debugMode: true,
-  baseUrl: 'http://localhost:50003'
+  baseUrl: 'http://localhost:50003/api'
 };
