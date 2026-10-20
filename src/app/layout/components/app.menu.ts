@@ -40,6 +40,57 @@ export class AppMenu {
             ]
         },
         {separator: true},
+
+        {
+            label: 'Hierarchy',
+            icon: 'pi pi-fw pi-align-left',
+            items: [
+                {
+                    label: 'planification',
+                    // icon: 'pi pi-fw pi-align-left',
+                    items: [
+                        {
+                            label: 'activities',
+                            // icon: 'pi pi-fw pi-align-left',
+                           routerLink: ['/activities']
+                        }
+                    ]
+                },
+                {
+                    label: 'Submenu 2',
+                    icon: 'pi pi-fw pi-align-left',
+                    items: [
+                        {
+                            label: 'Submenu 2.1',
+                            icon: 'pi pi-fw pi-align-left',
+                            items: [
+                                {
+                                    label: 'Submenu 2.1.1',
+                                    icon: 'pi pi-fw pi-align-left'
+                                },
+                                {
+                                    label: 'Submenu 2.1.2',
+                                    icon: 'pi pi-fw pi-align-left'
+                                }
+                            ]
+                        },
+                        {
+                            label: 'Submenu 2.2',
+                            icon: 'pi pi-fw pi-align-left',
+                            items: [
+                                {
+                                    label: 'Submenu 2.2.1',
+                                    icon: 'pi pi-fw pi-align-left'
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        
+        },
+
+         {separator: true},
         {
             label: 'Apps',
             icon: 'pi pi-th-large',
@@ -103,6 +154,7 @@ export class AppMenu {
                 }
             ]
         },
+        {separator: true},
         {separator: true},
         {
             label: 'UI Kit',

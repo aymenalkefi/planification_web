@@ -1,0 +1,6 @@
+<div class="card">
+  <h3>Modifier l'activité</h3>
+  @if (activity(); as a) {
+    <app-activity-form mode="edit" [activity]="a" (submitted)="save($event)" (cancelled)="back()" />
+  }
+</div>

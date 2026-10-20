@@ -1,0 +1,31 @@
+<p-panel header="Recherche d'activités" [toggleable]="true" class="block mb-4">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="flex flex-col gap-1">
+        <label for="s-id">id</label>
+        <p-inputnumber inputId="s-id" formControlName="id" [useGrouping]="false" />
+      </div>
+      <div class="flex flex-col gap-1">
+        <label for="s-name">Nom</label>
+        <input pInputText id="s-name" formControlName="name" />
+      </div>
+      <div class="flex flex-col gap-1">
+        <label for="s-desc">Description</label>
+        <input pInputText id="s-desc" formControlName="description" />
+      </div>
+      <div class="flex flex-col gap-1">
+        <label for="s-min">Durée min</label>
+        <p-inputnumber inputId="s-min" formControlName="durationMin" [useGrouping]="false" />
+      </div>
+      <div class="flex flex-col gap-1">
+        <label for="s-max">Durée max</label>
+        <p-inputnumber inputId="s-max" formControlName="durationMax" [useGrouping]="false" />
+      </div>
+    </div>
+
+    <div class="flex gap-2 justify-end mt-4">
+      <p-button label="Réinitialiser" severity="secondary" type="button" (onClick)="reset()" />
+      <p-button label="Rechercher" icon="pi pi-search" type="submit" />
+    </div>
+  </form>
+</p-panel>

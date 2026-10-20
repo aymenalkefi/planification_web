@@ -1,0 +1,60 @@
+<p-confirmdialog />
+
+<app-activity-search-form (search)="search($event)" />
+
+<div class="card">
+  <div class="flex justify-between items-center mb-4">
+    <h3 class="m-0">Activités</h3>
+    <p-button label="Nouvelle activité" icon="pi pi-plus" (onClick)="create()" />
+  </div>
+
+  <p-table
+    [value]="activities()"
+    [loading]="loading()"
+    [lazy]="true"
+    (onLazyLoad)="onLazyLoad($event)"
+    [totalRecords]="total()"
+    [paginator]="true"
+    [rows]="rows"
+    [first]="first"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    dataKey="id">
+
+    <ng-template #caption>
+      <div class="flex justify-end">
+        <p-multiselect
+          [options]="cols" [(ngModel)]="selectedCols"
+          optionLabel="header" placeholder="Colonnes"
+          [maxSelectedLabels]="0" selectedItemsLabel="{0} colonnes sélectionnées" />
+      </div>
+    </ng-template>
+
+    <ng-template #header>
+      <tr>
+        <th>Actions</th>
+        @for (col of selectedCols; track col.field) {
+          <th [pSortableColumn]="col.field">
+            {{ col.header }} <p-sortIcon [field]="col.field" />
+          </th>
+        }
+      </tr>
+    </ng-template>
+
+    <ng-template #body let-a>
+      <tr>
+        <td>
+          <p-button icon="pi pi-pencil" [rounded]="true" severity="secondary" (onClick)="edit(a)" />
+          <p-button icon="pi pi-trash" [rounded]="true" severity="danger" (onClick)="remove(a)" />
+          <p-button icon="pi pi-eye" [rounded]="true" severity="info" (onClick)="consult(a)" />
+        </td>
+        @for (col of selectedCols; track col.field) {
+          <td>{{ $any(a)[col.field] }}</td>
+        }
+      </tr>
+    </ng-template>
+
+    <ng-template #emptymessage>
+      <tr><td [attr.colspan]="selectedCols.length + 1">Aucune activité.</td></tr>
+    </ng-template>
+  </p-table>
+</div>
